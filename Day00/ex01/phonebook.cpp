@@ -1,6 +1,6 @@
-#include <phonebook.hpp>
-#include <contact.hpp>
+#include "phonebook.hpp"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -59,4 +59,22 @@ int main(int argc, char **argv)
     // viewContacts, viewIndex(int index)->viewContact(int index)
     // EXIT
     // freeContacts, serialize phonebook...
+    Phonebook *phonebook = new Phonebook();
+    string input;
+    while(1)
+    {
+        cin >> input;
+        if (input.compare("EXIT") == 0)
+            break;
+        if (input.compare("ADD") == 0)
+            phonebook->addContact(*makeContact());
+        if (input.compare("SEARCH") == 0){
+            phonebook->displayContacts();
+            cout << "Enter index: ";
+            cin >> input;
+            phonebook->displayContact(stoi(input));
+        }
+
+    }
+    return (0);
 }

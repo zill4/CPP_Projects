@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <contact.hpp>
+#include "contact.hpp"
 #include <iomanip>
 using namespace std;
 
@@ -33,6 +33,7 @@ bool Phonebook::addContact(Contact newContact){
         else
         {
             contacts[contactCount] = newContact;
+            contactCount++;
             return (true);
         }
 }
@@ -42,13 +43,18 @@ bool Phonebook::addContact(Contact newContact){
  */
 void Phonebook::displayContacts()
 {
-    cout << setw(10) << "INDEX" <<  "FIRST NAME" << "LAST NAME" << "NICKNAME\n";
+    cout << setw(10) << " INDEX ";
+    cout << setw(10) << " | " << "FIRST NAME";
+    cout << setw(10) << " | " << "LAST NAME";
+    cout << setw(10) << " | " << "NICKNAME" << "\n";
     if (contactCount > 0)
     {
         for (int i = 0; i < contactCount; i++)
         {
-            cout << setw(10) << i << contacts[i].getFirstName() \
-            << contacts[i].getLastName() << contacts[i].getNickname() << "\n";
+            cout << setw(10) << i;
+            cout << setw(10) << " | " << contacts[i].getFirstName();
+            cout << setw(10) << " | " << contacts[i].getLastName();
+            cout << setw(10) << " | " << contacts[i].getNickname() << "\n";
         }
     }
     cout << "------------------------------------------------------------------\n";
@@ -63,23 +69,23 @@ bool Phonebook::displayContact(int index)
         return (false);
     if (contacts[index].getFirstName().length() > 0)
     {
-        cout << "CONTACT #" << index << "\n";
-        cout << setw(5)
-        << "First Name: " << contacts[index].getFirstName() << "\n"
-        << "Last Name: " << contacts[index].getLastName() << "\n"
-        << "Nickname: " << contacts[index].getNickname() << "\n"
-        << "Login: " << contacts[index].getLogin() << "\n"
-        << "Postal Address: " << contacts[index].getPostAddress() << "\n"
-        << "Email Address: " << contacts[index].getEmailAddress() << "\n"
-        << "Phone Number: " << contacts[index].getPhoneNumber() << "\n"
-        << "Birthday: " << contacts[index].getBirthdate() << "\n"
-        << "Favorite Meal: " << contacts[index].getFavoriteMeal() << "\n"
-        << "Underwear Color: " << contacts[index].getUnderwearColor() << "\n"
-        << "Darkest Secrret: " << contacts[index].getDarkSecret() << "\n";
+        cout << "CONTACT # " << index << "\n";
+        cout << "First Name: " << setw(15) << contacts[index].getFirstName() << "\n";
+        cout << "Last Name: "<< setw(15) << contacts[index].getLastName() << "\n";
+        cout << "Nickname: " << setw(15) << contacts[index].getNickname() << "\n";
+        cout << "Login: " << setw(15) << contacts[index].getLogin() << "\n";
+        cout << "Postal Address: "<< setw(15) << contacts[index].getPostAddress() << "\n";
+        cout << "Email Address: "<< setw(15) << contacts[index].getEmailAddress() << "\n";
+        cout << "Phone Number: "<< setw(15) << contacts[index].getPhoneNumber() << "\n";
+        cout << "Birthday: " << setw(15) << contacts[index].getBirthdate() << "\n";
+        cout << "Favorite Meal: " << setw(15) << contacts[index].getFavoriteMeal() << "\n";
+        cout << "Underwear Color: " << setw(15) << contacts[index].getUnderwearColor() << "\n";
+        cout << "Darkest Secrret: " << setw(15) << contacts[index].getDarkSecret() << "\n";
     }
     else
     {
         cout << "ERROR CONTACT NOT FOUND\n";
     }
     cout << "------------------------------------------------------------------\n";
+    return (true);
 }

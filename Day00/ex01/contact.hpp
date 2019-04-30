@@ -81,5 +81,5 @@ class Contact
         string getFavoriteMeal() {return(favoriteMeal);}
         string getUnderwearColor() {return(underwearColor);}
         string getDarkSecret() {return(darkSecret);}
-}
+};
 
