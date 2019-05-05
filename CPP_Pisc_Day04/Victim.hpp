@@ -7,14 +7,19 @@ class Victim {
         void announceBirth(std::string n);
         void announceDeath(std::string n);
     public:
-        void introduction(Victim victor);
+        friend std::ostream& operator <<(std::ostream& os, Victim &v)
+        {
+            v.introduction(v.getName());
+            return (os);
+        }
+        void introduction(std::string n);
         std::string getName() {return (name); }
         void setName(std::string n) {name = n;}
     Victim();
     Victim(std::string n)
     {
-        n = name;
-        announceBirth(n);
+        name = n;
+        announceBirth(name);
     }
     ~Victim()
     {

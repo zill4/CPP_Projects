@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+
 class Sorcerer 
 {
     private:
@@ -7,21 +8,22 @@ class Sorcerer
         std::string title;
         void announceBirth(std::string n, std::string t);
         void announceDeath(std::string n, std::string t);
-        void operator <<(Sorcerer s)
-        {
-            introduction(s);
-        }
     public:
-        void introduction(Sorcerer supreme);
+        friend std::ostream& operator <<(std::ostream& os,  Sorcerer &s)
+        {
+            s.introduction(s.getName(), s.getTitle());
+            return (os);
+        }
+        void introduction(std::string name, std::string title);
         std::string getName() {return (name); }
         std::string getTitle() {return (title); }
         void setName(std::string n) {name = n;}
         void setTitle(std::string t) {title = t;}
     Sorcerer(std::string n, std::string t)
     {
-        t = title;
-        n = name;
-        announceBirth(n, t);
+        name = n;
+        title = t;
+        announceBirth(name, title);
     }
     ~Sorcerer()
     {
